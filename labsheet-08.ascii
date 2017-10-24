@@ -1,0 +1,398 @@
+= CA116 -- Lab Sheet 8 (Pot Pourri)
+Stephen Blott <stephen.blott@dcu.ie>
+:numbered:
+:toc2:
+:toclevels=4:
+:theme: smblott
+
+****
+_Einstein_ is link:/einstein/[here].
+****
+
+// //////////////////////////////////////////////////////////////
+== Tasks 1
+
+// //////////////////////////////////////////////////////////////
+=== Football scores
+
+.Task
+****
+The command-line arguments consist of exactly one integer,
+the _total score_ of _one team_ in a Gaelic football match.
+
+Write a Python script named +pp-football-scores.py+ which outputs _each
+possible combination of goals and points_ that the team could have scored, one per line.
+
+A goal is worth three points.
+****
+
+.Example invocation
+----
+python pp-football-scores.py 11
+----
+
+.Example standard output
+----
+0 11
+1 8
+2 5
+3 2
+----
+
+****
+The output must be in increasing order by the number of goals.
+****
+
+// //////////////////////////////////////////////////////////////
+=== Sum Integer Arguments
+
+.Task
+****
+Write a Python script named +pp-sum-integer-arguments.py+ which accept some
+number of arguments, _some of which are positive integers_, and writes the
+sum of the positive integers encountered to standard output.
+****
+
+[source, sh]
+.Example invocation
+----
+python pp-sum-integer-arguments.py 1 1a b 5 donkey 3 2 "3 blind mice" 4 -100
+----
+
+.Example standard output
+----
+15
+----
+
+.Explanation
+****
++15+ is the sum of +1+, +5+, +3+, +2+ and +4+.
+
+The other arguments are not positive integers, and are thus ignored.
+****
+
+// //////////////////////////////////////////////////////////////
+=== Products
+
+.Task
+****
+Write a Python script name +pp-products-cl.py+ which accepts exactly one
+command-line argument (+digits+, say).  This consists only of digits.
+
+On successive lines, your script should output the first digit, the product
+of the first two digits, the product of the first three digits, and so on.
+****
+
+.Example invocation
+----
+python pp-product-cl.py 41231
+----
+
+.Example standard output
+----
+4
+4
+8
+24
+24
+----
+
+.Tip
+****
+Only _one_ loop is required for this task.
+****
+
+// //////////////////////////////////////////////////////////////
+== Tasks 2
+
+// //////////////////////////////////////////////////////////////
+=== First character position
+
+.Task
+****
+Standard input consists of a single line of text, +s+ say.
+
+Write a Python script named +pp-first-character-position.py+ which accepts _exactly
+one_ command-line argument, a single character +c+, and outputs the position of the
+first occurrence of word +c+ in +s+.
+
+Your script should produce no output if +c+ does not occur in +s+.
+****
+
+[source, sh]
+.Example invocation
+----
+python pp-first-character-position.py t
+----
+
+.Example standard input
+----
+Mary had a little lamb.
+----
+
+.Example standard output
+----
+13
+----
+
+// //////////////////////////////////////////////////////////////
+=== All character positions
+
+.Task
+****
+Repeat the task above.  This time, however, your script must output every position at which +c+ occurs in +s+.
+
+Name your script +pp-every-character-position.py+.
+****
+
+.Example invocation
+****
+python pp-every-character-position.py a
+****
+
+.Example standard input
+----
+Mary had a little lamb.
+----
+
+.Example standard output
+----
+1
+6
+9
+19
+----
+
+// //////////////////////////////////////////////////////////////
+== Tasks 3
+
+// //////////////////////////////////////////////////////////////
+=== First run
+
+****
+Let a _run_ of length +n+ within a string be any sequence of +n+ (or more)
+adjacent identical characters within +s+.  For example, there is a run of length two in the word "_letter_".
+****
+
+.Task
+****
+Write a Python script named +pp-first-run.py+ which accepts _exactly two_
+command-line argument, the first a positive integer +n+ and the second a
+string +s+.
+
+Your script should output two lines:
+
+- first the original string +s+,
+- and then a second line with a vertical bar indicating the position of the start of the first run of length +n+ (see the example, below).
+
+You should assume that a run of length +n+ does indeed occur in +s+.
+****
+
+[source, sh]
+.Example invocation
+----
+python pp-first-run.py 3 "abcc dd d eee ff"
+----
+
+.Example standard output
+----
+abcc dd d eee ff
+          |
+----
+
+.Tip
+****
+A good solution requires only one +while+ loop (linear search), and makes good use of the string multiplication operator (+*+).
+****
+
+// //////////////////////////////////////////////////////////////
+=== All runs
+
+.Task
+****
+Write a Python script named +pp-all-runs.py+ which accepts exactly one
+command-line argument, +s+ say, and outputs the character and length of
+each run in +s+, one per line.
+****
+
+[source, sh]
+.Example invocation
+----
+python pp-all-runs.py "abbatttgssk99  8aaa"
+----
+
+.Example standard output
+----
+a 1
+b 2
+a 1
+t 3
+g 1
+s 2
+k 1
+9 2
+  2
+8 1
+a 3
+----
+
+// //////////////////////////////////////////////////////////////
+=== Decode runs
+
+.Task
+****
+Standard input consists of a sequence of lines terminated by a line containing only the text +END+.
+Each line consists of a single character (at position +0+), and a run length +n+ (starting at position +2+).
+
+The input is, in effect, the output from the previous task.
+
+**Note that +END+ is capitalised here**.
+
+Write a Python script named +pp-decode-runs.py+ which writes a single
+string to standard output.  That string consists of the sequence of
+characters described by the sequence of runs read from standard input.
+
+In effect, your script should decode the output of your solution to the previous task.
+****
+
+.Example standard input
+----
+a 1
+b 2
+a 1
+t 3
+g 1
+s 2
+k 1
+9 2
+  2
+8 1
+a 3
+END
+----
+
+.Example standard output
+----
+abbatttgssk99  8aaa
+----
+
+.Tip
+****
+Only one loop is required for this task.
+****
+
+// //////////////////////////////////////////////////////////////
+== Tasks 4
+
+// //////////////////////////////////////////////////////////////
+=== Replace all
+
+.Task
+****
+Standard input consists of a sequence of lines terminated by a line containing only the text +END+.
+
+**Note that +END+ is capitalised here**.
+
+Write a Python script name +pp-replace-all.py+ which accepts exactly two command-line arguments (+pattern+ and +replacement+, say) and
+copies the lines of standard input to standard output, replacing, on each line, *all* occurrences of +pattern+ with +replacement+.
+****
+
+.Example invocation
+----
+python pp-replace-all.py Mary Barry
+----
+
+.Example standard input
+----
+Mary, Mary, quite contrary,
+How does your garden grow?
+Mistress Mary, Quite contrary,
+How does your garden grow?
+END
+----
+
+.Example standard output
+----
+Barry, Barry, quite contrary,
+How does your garden grow?
+Mistress Barry, Quite contrary,
+How does your garden grow?
+----
+
+// //////////////////////////////////////////////////////////////
+=== List lab tasks
+
+****
+This lab sheet is written in a format known as asciidoc.  Asciidoc is a
+simple text mark up language that is easily converted to HTML for web pages.
+
+You can view the source code for this document link:labsheet-08.ascii[here].
+
+Observe that, within each task description, the file name which you are required to use is enclosed in plus signs.
+This instructs asccidoc to format the file names in a teletext font.
+****
+
+.Set up
+****
+Copy the asciidoc source of this labsheet (see the link, above) into a
+file. Choose a suitable name (for example, +labsheet-08.ascii+).
+****
+
+.Task
+****
+Standard input consists of an asciidoc document, terminated by a line
+containing only the text +end+.  This file already contains such a
+terminator (see right at the bottom).
+
+Note that +end+ is **not** capitalised here.
+
+Write a Python script named +pp-extract-tasks.py+ which reads the file
+described above via standard input and outputs only a list of the names of the Python files
+for the tasks described in the lab sheet, one per line.
+
+The input is terminated by a line containing only the text +end+, as usual.
+****
+
+.Example invocation
+----
+python pp-extract-tasks.py < labsheet-08.ascii
+----
+
+.Example standard output
+----
+pp-football-scores.py
+pp-products-cl.py
+pp-first-character-position.py
+pp-every-character-position.py
+pp-first-run.py
+pp-all-runs.py
+pp-decode-runs.py
+pp-replace-all.py
+pp-extract-tasks.py
+----
+
+.Tip
+****
+Within the main loop, use _two linear searches_: one to find the first plus
+sign on the line, and a second to find the second plus sign on the line.
+****
+
+// //////////////////////////////////////////////////////////////
+// Verify: +this is not a file name, it has no .py extension+.
+== Ignore this
+
+----
+# For the task above to work, this file had better end
+# with a line containing only the text "end", so here's
+# such a line:
+end
+----
+
+// /////////////////////////////////////////////////////////
+include::../../misc/instrument.txt[]
+include::../../misc/asciimath.txt[]
+
+////
+vim: ft=asciidoc
+////
+
